@@ -7,7 +7,7 @@ class Node {
         this.next = null;
     }
 }
-class LinkedList {
+class SimpleList {
     private Node head;
 
     public void add(int data) {
