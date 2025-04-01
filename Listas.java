@@ -22,3 +22,8 @@ class SimpleList {
         }
         temp.next = newNode;
     }
+    public void addFirst(int data) {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
+    }
