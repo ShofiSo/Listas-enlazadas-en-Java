@@ -27,3 +27,20 @@ class SimpleList {
         newNode.next = head;
         head = newNode;
     }
+    public void addMiddle(int data, int position) {
+        if (position <= 0) {
+            addFirst(data);
+            return;
+        }
+        Node newNode = new Node(data);
+        Node temp = head;
+        for (int i = 0; temp != null && i < position - 1; i++) {
+            temp = temp.next;
+        }
+        if (temp == null) {
+            add(data);
+            return;
+        }
+        newNode.next = temp.next;
+        temp.next = newNode;
+    }
