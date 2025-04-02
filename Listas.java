@@ -7,6 +7,7 @@ class Node {
         this.next = null;
     }
 }
+
 class SimpleList {
     private Node head;
 
@@ -22,11 +23,13 @@ class SimpleList {
         }
         temp.next = newNode;
     }
+
     public void addFirst(int data) {
         Node newNode = new Node(data);
         newNode.next = head;
         head = newNode;
     }
+
     public void addMiddle(int data, int position) {
         if (position <= 0) {
             addFirst(data);
@@ -44,6 +47,7 @@ class SimpleList {
         newNode.next = temp.next;
         temp.next = newNode;
     }
+
     public void remove(int data) {
         if (head == null) return;
         if (head.data == data) {
@@ -57,4 +61,26 @@ class SimpleList {
         if (temp.next != null) {
             temp.next = temp.next.next;
         }
+    }
+
+    public void printList() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+
+    public void reverse() {
+        Node prev = null;
+        Node current = head;
+        Node next;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
     }
