@@ -44,3 +44,17 @@ class SimpleList {
         newNode.next = temp.next;
         temp.next = newNode;
     }
+    public void remove(int data) {
+        if (head == null) return;
+        if (head.data == data) {
+            head = head.next;
+            return;
+        }
+        Node temp = head;
+        while (temp.next != null && temp.next.data != data) {
+            temp = temp.next;
+        }
+        if (temp.next != null) {
+            temp.next = temp.next.next;
+        }
+    }
