@@ -84,3 +84,14 @@ class SimpleList {
         }
         head = prev;
     }
+    public boolean contains(int value) {
+        Node temp = head;
+        while (temp != null) {
+            if (temp.data == value) {
+                return true;
+            }
+            temp = temp.next;
+        }
+        return false;
+    }
+}
