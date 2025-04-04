@@ -132,12 +132,16 @@ public class Listas {
 
         // Solicitar DNI al usuario en la consola
         System.out.print("\nIngrese su DNI por favor: ");
-        int dni = scanner.nextInt();
+        long dni = scanner.nextLong(); // Se cambia de nextInt() a nextLong()
 
-        if (list.contains(dni)) {
-            System.out.println("El DNI " + dni + " esta en la lista");
+        if (dni >= Integer.MIN_VALUE && dni <= Integer.MAX_VALUE) {
+            if (list.contains((int) dni)) {
+                System.out.println("El DNI " + dni + " está en la lista.");
+            } else {
+                System.out.println("El DNI " + dni + " NO está en la lista.");
+            }
         } else {
-            System.out.println("El DNI " + dni + " NO esta en la lista");
+            System.out.println("El DNI ingresado es demasiado grande para compararlo con la lista.");
         }
 
         scanner.close();
