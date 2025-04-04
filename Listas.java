@@ -17,12 +17,6 @@ class LinkedList {
         this.head = null;
     }
 
-    public void addFirst(int data) {
-        Node newNode = new Node(data);
-        newNode.next = head;
-        head = newNode;
-    }
-
     public void add(int data) {
         Node newNode = new Node(data);
         if (head == null) {
@@ -34,6 +28,12 @@ class LinkedList {
             current = current.next;
         }
         current.next = newNode;
+    }
+
+    public void addFirst(int data) {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
     }
 
     public void addMiddle(int data, int position) {
@@ -108,40 +108,35 @@ public class Listas {
         Scanner scanner = new Scanner(System.in);
         LinkedList list = new LinkedList();
 
-        list.addFirst(1);
-        list.add(3);
-        list.addMiddle(5, 1);
-        System.out.println("Lista actual:");
-        list.printList();
-        
-        list.remove(3);
-        System.out.println("Lista después de eliminar el 3:");
-        list.printList();
-        
-        list.add(7);
-        System.out.println("¿La lista contiene el 5? " + list.contains(5));
-        System.out.println("¿La lista contiene el 9? " + list.contains(9));
-
-        list.reverse();
-        System.out.println("Lista después de revertir:");
-        list.printList();
-
-        list.addFirst(9);
-        System.out.println("Lista final:");
-        list.printList();
-
         // Solicitar DNI al usuario en la consola
-        System.out.print("\nIngrese su DNI por favor: ");
-        long dni = scanner.nextLong(); // Se cambia de nextInt() a nextLong()
+        System.out.print("Ingrese su DNI por favor: ");
+        long dni = scanner.nextLong();
 
-        if (dni >= Integer.MIN_VALUE && dni <= Integer.MAX_VALUE) {
-            if (list.contains((int) dni)) {
-                System.out.println("El DNI " + dni + " está en la lista.");
-            } else {
-                System.out.println("El DNI " + dni + " NO está en la lista.");
-            }
+        // Validar si el usuario pertenece al Grupo 2
+        if (dni % 10 == 1 || dni % 10 == 3 || dni % 10 == 5 || dni % 10 == 7 || dni % 10 == 9) {
+            list.addFirst(1);
+            list.add(3);
+            list.addMiddle(5, 1);
+            System.out.println("Lista actual:");
+            list.printList();
+            
+            list.remove(3);
+            System.out.println("Lista después de eliminar el 3:");
+            list.printList();
+            
+            list.add(7);
+            System.out.println("¿La lista contiene el 5? " + list.contains(5));
+            System.out.println("¿La lista contiene el 9? " + list.contains(9));
+
+            list.reverse();
+            System.out.println("Lista después de revertir:");
+            list.printList();
+
+            list.addFirst(9);
+            System.out.println("Lista final:");
+            list.printList();
         } else {
-            System.out.println("El DNI ingresado es demasiado grande para compararlo con la lista.");
+            System.out.println("Su carnet no pertenece al Grupo 2.");
         }
 
         scanner.close();
