@@ -152,12 +152,43 @@ Agregar, eliminar, verificar valores y revertir la lista.
 Imprime los resultados en la consola.
 
 *************************************
-System.out.print("\nIngrese su DNI por favor: ");
-long dni = scanner.nextLong(); 
+public class Listas {  
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        LinkedList list = new LinkedList();
 
-int lastDigit = (int) (dni % 10);
-if (lastDigit == 1 || lastDigit == 3 || lastDigit == 5 || lastDigit == 7 || lastDigit == 9) {
-    System.out.println("Perteneces al Grupo 2. Ejecutando instrucciones...");
-    // Ejecución de operaciones en la lista enlazada
+        // Solicitar DNI al usuario en la consola
+        System.out.print("Ingrese su DNI por favor: ");
+        long dni = scanner.nextLong();
+
+        // Validar si el usuario pertenece al Grupo 2
+        if (dni % 10 == 1 || dni % 10 == 3 || dni % 10 == 5 || dni % 10 == 7 || dni % 10 == 9) {
+            list.addFirst(1);
+            list.add(3);
+            list.addMiddle(5, 1);
+            System.out.println("Lista actual:");
+            list.printList();
+            
+            list.remove(3);
+            System.out.println("Lista después de eliminar el 3:");
+            list.printList();
+            
+            list.add(7);
+            System.out.println("¿La lista contiene el 5? " + list.contains(5));
+            System.out.println("¿La lista contiene el 9? " + list.contains(9));
+
+            list.reverse();
+            System.out.println("Lista después de revertir:");
+            list.printList();
+
+            list.addFirst(9);
+            System.out.println("Lista final:");
+            list.printList();
+        } else {
+            System.out.println("Su carnet no pertenece al Grupo 2.");
+        }
+
+        scanner.close();
+    }
 }
 *************************************
